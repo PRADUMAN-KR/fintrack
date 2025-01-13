@@ -20,5 +20,6 @@ from app1 import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('transaction/',views.Add_Transaction,name = 'transaction')
+    path('',views.get_transaction,name = 'home'),
+    path('transactions/',views.all_transaction,name = 'transactions'),
 ]
