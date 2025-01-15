@@ -39,10 +39,7 @@ class Budget(models.Model):
     savings = models.DecimalField(max_digits=10, decimal_places=2)
     expenses = models.DecimalField(max_digits=10, decimal_places=2)
 
-    # def clean(self):
-    #     if self.expenses > self.income:
-    #         raise ValidationError('Expenses cannot be greater than income')
-        
+   
     def save(self,*args,**kwargs):
         # self.clean()
         self.total_balance = self.income - self.expenses
