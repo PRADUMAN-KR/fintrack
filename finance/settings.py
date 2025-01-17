@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,6 +40,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'app1'
 ]
+
+AUTH_USER_MODEL = 'app1.custom_user'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -122,3 +125,10 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+#---------------------added manually ----------------------------
+# AUTHENTICATION_BACKENDS = [
+#     'app1.backends.EmailBackend',  # Use custom backend for email authentication
+#     'django.contrib.auth.backends.ModelBackend',  # Fallback to the default
+# ]

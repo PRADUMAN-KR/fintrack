@@ -6,6 +6,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',views.dashboard,name = 'home'),
     path('transactions/',views.all_transaction,name = 'transactions'),
-    path('register/',views.register_login,name = 'login'),
+     path('auth/', views.signup_view, name='auth'),
     path('add_transaction/',views.add_Transaction,name = 'addTransaction'),
 ]

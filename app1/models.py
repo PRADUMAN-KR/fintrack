@@ -1,8 +1,14 @@
 from django.db import models
-from django.contrib.auth.models import User
+# from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+
+from django.contrib.auth.models import AbstractUser
 # Create your models here.
 
+
+class custom_user(AbstractUser):
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
+    date_of_birth = models.DateField(blank=True, null=True)
 # ---------------------transaction model----------------------
 
 class Transaction(models.Model):
@@ -17,7 +23,7 @@ class Transaction(models.Model):
         ('food', 'Food'),
         ('others', 'Others'),
     ]
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(custom_user, on_delete=models.CASCADE)
     type = models.CharField(choices = Transaction_type, max_length=50)
     amount = models.DecimalField(max_digits=10,decimal_places=2)
 
@@ -30,7 +36,7 @@ class Transaction(models.Model):
     
 # ----------------------------budget model----------------------------------------
 class Budget(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(custom_user, on_delete=models.CASCADE)
     category = models.CharField(max_length=50)
     limit = models.DecimalField(max_digits=10, decimal_places=2)
     date = models.DateField()
@@ -49,4 +55,7 @@ class Budget(models.Model):
 
     def __str__(self):
         return f"{self.category} - {self.limit}"
+
+
+#-----------------------------login----------------------------------------------
 

@@ -163,7 +163,7 @@
             }
         }
     </style>
-    {% block styles %}{% endblock styles %}
+    {% block style %}{% endblock style %}
 </head>
 
     <body>
@@ -181,20 +181,19 @@
                         <a href="{% url 'addTransaction' %}">Add Transactions</a>
 
                     </button>
-                    <a href="{% url 'login' %}" class="login">LOGIN</a>
+                    <a href="{% url 'auth' %}" class="login">LOGIN</a>
                 </nav>
             </div>
         </header>
-        <main>Add Transaction
-            Type ￼
-            ---------
-            Amount ￼
-            Date ￼
-            dd/mm/yyyy
-            Category ￼
-            Description 
+        {% block body %}
+        {% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+        {% endblock body %}
 
-
-   
 
 </html>
